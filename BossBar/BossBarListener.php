@@ -38,16 +38,4 @@ class BossBarListener implements Listener
                 $e->getPlayer()->kick("Invalid packet received", false);
         }
     }
-
-    public function onJoin(PlayerJoinEvent $event)
-    {
-        $player = $event->getPlayer();
-        if ($player instanceof Player) {
-            $player->setBar((new DiverseBossBar())->addPlayer($player)->setPercentage(1));
-            $this->main->getScheduler()->scheduleRepeatingTask(new SpawnTask($player), 10);
-        }
-    }
-    public function onPlayerCreation(PlayerCreationEvent $event) {
-    $event->setPlayerClass(Player::class);
-    }
 }
